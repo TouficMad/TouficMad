@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: voip
+    folder: Voice Routing
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

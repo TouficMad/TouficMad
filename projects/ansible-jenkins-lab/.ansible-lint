@@ -1,0 +1,5 @@
+exclude_paths:
+  - .github/
+  - docker/
+  - monitoring/
+  - docker-compose.yml

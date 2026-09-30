@@ -1,0 +1,27 @@
+replicaCount: 2
+
+image:
+  repository: taskapp
+  tag: ""          # defaults to .Chart.AppVersion; CI sets it to the git SHA
+  pullPolicy: IfNotPresent
+
+env:
+  APP_ENV: production
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70

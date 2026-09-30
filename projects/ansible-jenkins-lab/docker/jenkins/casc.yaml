@@ -1,0 +1,33 @@
+jenkins:
+  systemMessage: "Ansible + Jenkins lab. Configured by Jenkins Configuration as Code."
+  numExecutors: 2
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "${JENKINS_ADMIN_ID:-admin}"
+          password: "${JENKINS_ADMIN_PASSWORD:-admin}"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+
+unclassified:
+  location:
+    url: "http://localhost:8080/"
+
+jobs:
+  - script: |
+      pipelineJob('ansible-deploy') {
+        description('Lint, dry-run and deploy the Ansible playbook to the lab servers')
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote { url(System.getenv('REPO_URL') ?: 'https://github.com/TouficMad/ansible-jenkins-lab.git') }
+                branch('*/main')
+              }
+            }
+            scriptPath('Jenkinsfile')
+          }
+        }
+      }

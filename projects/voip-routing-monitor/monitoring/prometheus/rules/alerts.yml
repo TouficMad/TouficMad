@@ -1,0 +1,54 @@
+groups:
+  - name: voip-routing
+    rules:
+      - alert: VoipLowASR
+        expr: route:voip_asr:ratio_rate5m < 0.35 and route:voip_calls:rate5m > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Low ASR on {{ $labels.carrier }} → {{ $labels.destination }}"
+          description: "ASR is {{ $value | humanizePercentage }} over the last 5 minutes. Check the carrier's SIP responses and consider rerouting."
+
+      - alert: VoipHighPDD
+        expr: route:voip_pdd_seconds:p95_5m > 8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High post-dial delay on {{ $labels.carrier }} → {{ $labels.destination }}"
+          description: "p95 PDD is {{ $value | humanize }}s. Callers wait too long before ringing."
+
+      - alert: VoipLowNER
+        expr: route:voip_ner:ratio_rate5m < 0.85 and route:voip_calls:rate5m > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Network failures on {{ $labels.carrier }} → {{ $labels.destination }}"
+          description: "NER is {{ $value | humanizePercentage }}. Too many 5xx/404 responses from the carrier network."
+
+      - alert: VoipRouteBlocked
+        expr: voip_route_priority == 0
+        for: 5m
+        labels:
+          severity: info
+        annotations:
+          summary: "{{ $labels.carrier }} removed from {{ $labels.destination }} routing plan"
+          description: "The carrier no longer meets the ASR/PDD thresholds for this destination."
+
+      - alert: VoipNoTraffic
+        expr: sum(rate(voip_calls_total[5m])) == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "No calls are being processed"
+
+      - alert: RoutingMonitorDown
+        expr: up{job="routing-monitor"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Routing monitor exporter is down"

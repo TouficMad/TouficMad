@@ -1,0 +1,91 @@
+name: Terraform
+
+on:
+  pull_request:
+    paths: ["**.tf", ".github/workflows/terraform.yml"]
+  push:
+    branches: [main]
+    paths: ["**.tf", ".github/workflows/terraform.yml"]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to apply
+        type: choice
+        options: [dev, prod]
+        default: dev
+
+permissions:
+  contents: read
+  id-token: write # for AWS OIDC
+  pull-requests: write
+
+jobs:
+  validate:
+    name: fmt & validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.10.5
+
+      - name: terraform fmt
+        run: terraform fmt -check -recursive
+
+      - name: terraform validate
+        run: |
+          for dir in modules/* environments/*; do
+            echo "::group::$dir"
+            terraform -chdir="$dir" init -backend=false -input=false
+            terraform -chdir="$dir" validate
+            echo "::endgroup::"
+          done
+
+      - name: tflint
+        uses: terraform-linters/setup-tflint@v4
+      - run: tflint --init && tflint --recursive
+
+  plan:
+    name: plan (${{ matrix.environment }})
+    needs: validate
+    # Only runs once you add the AWS_ROLE_ARN secret (see README)
+    if: ${{ vars.AWS_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [dev, prod]
+    defaults:
+      run:
+        working-directory: environments/${{ matrix.environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.10.5
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: eu-west-1
+      - run: terraform init -input=false
+      - run: terraform plan -input=false -no-color -out=tfplan
+
+  apply:
+    name: apply (${{ inputs.environment }})
+    needs: plan
+    if: ${{ github.event_name == 'workflow_dispatch' && vars.AWS_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }} # add required reviewers on "prod" in repo settings
+    defaults:
+      run:
+        working-directory: environments/${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.10.5
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: eu-west-1
+      - run: terraform init -input=false
+      - run: terraform apply -input=false -auto-approve

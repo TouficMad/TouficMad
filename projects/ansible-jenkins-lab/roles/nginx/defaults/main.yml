@@ -1,0 +1,3 @@
+---
+nginx_site_title: "Hello from Ansible"
+nginx_web_root: /var/www/lab

@@ -1,0 +1,11 @@
+---
+common_packages:
+  - curl
+  - htop
+  - vim
+  - tzdata
+  - ca-certificates
+common_timezone: "Asia/Beirut"
+common_admin_users:
+  - name: toufic
+    shell: /bin/bash

@@ -1,0 +1,30 @@
+# Routing quality thresholds used by the least-cost routing plan
+thresholds:
+  min_asr: 0.40      # carriers below 40% ASR are pulled from the route
+  max_pdd: 6.0       # seconds
+
+kpi:
+  window_seconds: 300
+  min_attempts: 20   # ignore routes with too little traffic to judge
+
+simulator:
+  calls_per_second: 20
+
+# Carrier profiles: baseline quality per destination (for the simulator)
+# and the rate we pay (for least-cost routing).
+carriers:
+  carrier-alpha:
+    destinations:
+      UK-Mobile:  {asr: 0.55, acd: 180, pdd: 2.5, cost_per_min: 0.0120}
+      FR-Fixed:   {asr: 0.60, acd: 240, pdd: 2.0, cost_per_min: 0.0065}
+      LB-Mobile:  {asr: 0.45, acd: 150, pdd: 4.0, cost_per_min: 0.1100}
+  carrier-bravo:
+    destinations:
+      UK-Mobile:  {asr: 0.50, acd: 170, pdd: 3.0, cost_per_min: 0.0095}
+      FR-Fixed:   {asr: 0.58, acd: 220, pdd: 2.2, cost_per_min: 0.0070}
+      LB-Mobile:  {asr: 0.48, acd: 160, pdd: 3.5, cost_per_min: 0.1250}
+  carrier-charlie:
+    destinations:
+      UK-Mobile:  {asr: 0.42, acd: 120, pdd: 4.5, cost_per_min: 0.0080}
+      LB-Mobile:  {asr: 0.40, acd: 140, pdd: 5.0, cost_per_min: 0.0950}
+

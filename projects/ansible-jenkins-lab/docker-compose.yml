@@ -1,0 +1,44 @@
+x-target: &target
+  build: ./docker/target
+  privileged: true
+  cgroup: host
+  tmpfs:
+    - /run
+    - /run/lock
+  volumes:
+    - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    - ./keys:/etc/ssh/lab_keys:ro
+
+services:
+  jenkins:
+    build: ./docker/jenkins
+    ports:
+      - "8080:8080"
+    environment:
+      REPO_URL: ${REPO_URL:-https://github.com/TouficMad/ansible-jenkins-lab.git}
+      JENKINS_ADMIN_PASSWORD: ${JENKINS_ADMIN_PASSWORD:-admin}
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - ./keys:/keys:ro
+
+  web1:
+    <<: *target
+    hostname: web1
+    ports:
+      - "8081:80"
+
+  web2:
+    <<: *target
+    hostname: web2
+    ports:
+      - "8082:80"
+
+  prometheus:
+    image: prom/prometheus:v2.55.0
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+
+volumes:
+  jenkins_home:
