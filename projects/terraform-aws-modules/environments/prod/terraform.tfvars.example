@@ -1,3 +1,0 @@
-region        = "eu-west-1"
-project       = "toufic-lab"
-allowed_cidrs = ["203.0.113.10/32"] # your public IP

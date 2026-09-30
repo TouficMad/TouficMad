@@ -1,3 +1,0 @@
-region            = "eu-west-1"
-name              = "taskapp"
-github_repository = "TouficMad/end-to-end-devops-aws"
