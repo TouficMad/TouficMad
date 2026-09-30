@@ -1,0 +1,59 @@
+# Unit tests for the alert rules: promtool test rules monitoring/prometheus/tests/alerts_test.yml
+rule_files:
+  - ../rules/recording.yml
+  - ../rules/alerts.yml
+
+evaluation_interval: 1m
+
+tests:
+  - interval: 1m
+    input_series:
+      # 60 calls/min on the route, only 12 answered → ASR 20%
+      - series: 'voip_calls_total{carrier="carrier-bravo",destination="UK-Mobile",sip_code="200"}'
+        values: "0+12x20"
+      - series: 'voip_calls_total{carrier="carrier-bravo",destination="UK-Mobile",sip_code="503"}'
+        values: "0+48x20"
+      - series: 'voip_calls_answered_total{carrier="carrier-bravo",destination="UK-Mobile"}'
+        values: "0+12x20"
+      - series: 'voip_calls_network_effective_total{carrier="carrier-bravo",destination="UK-Mobile"}'
+        values: "0+12x20"
+    alert_rule_test:
+      - eval_time: 15m
+        alertname: VoipLowASR
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              carrier: carrier-bravo
+              destination: UK-Mobile
+            exp_annotations:
+              summary: "Low ASR on carrier-bravo → UK-Mobile"
+              description: "ASR is 20% over the last 5 minutes. Check the carrier's SIP responses and consider rerouting."
+      - eval_time: 15m
+        alertname: VoipLowNER
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              carrier: carrier-bravo
+              destination: UK-Mobile
+            exp_annotations:
+              summary: "Network failures on carrier-bravo → UK-Mobile"
+              description: "NER is 20%. Too many 5xx/404 responses from the carrier network."
+
+  - interval: 1m
+    input_series:
+      # Healthy route: 60% ASR, no alert expected
+      - series: 'voip_calls_total{carrier="carrier-alpha",destination="FR-Fixed",sip_code="200"}'
+        values: "0+36x20"
+      - series: 'voip_calls_total{carrier="carrier-alpha",destination="FR-Fixed",sip_code="486"}'
+        values: "0+24x20"
+      - series: 'voip_calls_answered_total{carrier="carrier-alpha",destination="FR-Fixed"}'
+        values: "0+36x20"
+      - series: 'voip_calls_network_effective_total{carrier="carrier-alpha",destination="FR-Fixed"}'
+        values: "0+60x20"
+    alert_rule_test:
+      - eval_time: 15m
+        alertname: VoipLowASR
+        exp_alerts: []
+      - eval_time: 15m
+        alertname: VoipLowNER
+        exp_alerts: []

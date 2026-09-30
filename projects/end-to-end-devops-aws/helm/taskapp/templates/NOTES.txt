@@ -1,0 +1,4 @@
+taskapp {{ .Values.image.tag | default .Chart.AppVersion }} deployed.
+
+Get the public URL (the load balancer takes a minute or two):
+  kubectl get svc {{ include "taskapp.fullname" . }} -n {{ .Release.Namespace }} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
