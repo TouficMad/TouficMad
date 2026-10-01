@@ -18,7 +18,7 @@ _“Automate what you can, optimize what you can’t, and always keep learning.�
 ### 🚀 About me
 
 - 📡 **5 years** of experience in telecom infrastructure and voice routing systems: managing critical systems, optimizing routing plans and keeping global connectivity fast and reliable.
-- 💻 **Moving into DevOps:** I'm combining my telecom background with automation, CI/CD, infrastructure as code and the cloud.
+- 💻 I'm combining my telecom background with automation, CI/CD, infrastructure as code and the cloud.
 - 🎓 Master's in Computer and Telecom Engineering.
 - 🎯 I like making systems simpler, deployment pipelines faster, and teams able to scale.
 
