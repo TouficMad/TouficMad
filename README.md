@@ -20,9 +20,10 @@
 
 I'm a **Routing Team Leader and Telecom Engineer** who loves **DevOps**. I spend my days keeping voice and SMS traffic flowing between carriers worldwide, and my nights automating everything I touch.
 
-- 📡 **5 years** running critical telecom infrastructure: voice routing, carrier interconnects, least-cost routing and quality KPIs
+- 📡 **5 years** running critical telecom infrastructure: voice and SMS routing, carrier interconnects, least-cost routing and quality KPIs
 - ⚙️ **DevOps all the way:** infrastructure as code, CI/CD, containers, Kubernetes and observability
-- 🔀 **Telecom × DevOps:** I build tools that bring cloud-native practices to SIP, SMPP and carrier routing
+- 💬 **Latest build: [SMS Gateway](https://github.com/TouficMad/sms-gateway).** It sends SMS to carriers over **SMPP 3.4** with least-cost routing, automatic failover, delivery tracking, Kubernetes autoscaling and Grafana monitoring
+- 🔀 **Telecom × DevOps:** I build tools that bring cloud-native practices to voice (SIP) and SMS (SMPP) routing
 - 🎓 **Master's** in Computer and Telecom Engineering
 - 💬 Ask me about **routing, SMPP, Terraform, Kubernetes** or **Grafana dashboards**
 
