@@ -3,7 +3,7 @@
 <div align="center">
 
 <a href="https://github.com/TouficMad">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=21&duration=3200&pause=900&color=38BDF8&center=true&vCenter=true&width=640&lines=Routing+calls+%26+SMS+across+the+globe+%F0%9F%8C%8D;I+love+DevOps%2C+automation+%26+clean+pipelines+%E2%9A%99%EF%B8%8F;Terraform+%E2%80%A2+Kubernetes+%E2%80%A2+Ansible+%E2%80%A2+Prometheus;If+you+do+it+twice%2C+automate+it+%F0%9F%A4%96" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=21&duration=3200&pause=900&color=38BDF8&center=true&vCenter=true&width=640&lines=Routing+calls+%26+SMS+across+the+globe+%F0%9F%8C%8D;I+love+DevOps%2C+automation+%26+clean+pipelines+%E2%9A%99%EF%B8%8F;Terraform+%E2%80%A2+Kubernetes+%E2%80%A2+Ansible+%E2%80%A2+Prometheus" alt="Typing SVG" />
 </a>
 
 <br/>
@@ -18,8 +18,7 @@
 
 ## 👨‍💻 About me
 
-I'm a **Routing Team Leader and Telecom Engineer** who loves **DevOps**. I spend my days keeping voice and SMS traffic flowing between carriers worldwide, and my nights automating everything I touch.
-
+ **Routing Team Leader and Telecom Engineer**
 - 📡 **5 years** running critical telecom infrastructure: voice and SMS routing, carrier interconnects, least-cost routing and quality KPIs
 - ⚙️ **DevOps all the way:** infrastructure as code, CI/CD, containers, Kubernetes and observability
 - 💬 **Latest build: [SMS Gateway](https://github.com/TouficMad/sms-gateway).** It sends SMS to carriers over **SMPP 3.4** with least-cost routing, automatic failover, delivery tracking, Kubernetes autoscaling and Grafana monitoring
