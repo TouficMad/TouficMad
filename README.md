@@ -25,7 +25,7 @@ _“Automate what you can, optimize what you can’t, and always keep learning.�
 ### 🛠️ Toolbox
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=aws,terraform,ansible,docker,kubernetes,jenkins,githubactions,prometheus,grafana,linux,bash,python,git,github&perline=14" alt="Tech stack" />
+  <img src="https://skillicons.dev/icons?i=aws,terraform,ansible,docker,kubernetes,jenkins,githubactions,prometheus,grafana,redis,linux,bash,python,git,github&perline=15" alt="Tech stack" />
 </p>
 
 | Area | Tools |
@@ -36,7 +36,7 @@ _“Automate what you can, optimize what you can’t, and always keep learning.�
 | 📦 Containers | Docker, Docker Compose, Kubernetes, Helm |
 | 📈 Monitoring | Prometheus, Alertmanager, Grafana |
 | 🧑‍💻 Scripting | Bash, Python |
-| 📞 Telecom | Voice routing, SIP, LCR, carrier KPIs (ASR, NER, ACD, PDD) |
+| 📞 Telecom | Voice routing, SIP, SMPP, LCR, carrier KPIs (ASR, NER, ACD, PDD, DLR rate) |
 
 ---
 
@@ -47,6 +47,7 @@ _“Automate what you can, optimize what you can’t, and always keep learning.�
 | 🌐 **[End-to-End DevOps on AWS](https://github.com/TouficMad/end-to-end-devops-aws)** | A Python API taken from code to production: tested, containerized, deployed to **EKS** with Terraform, GitHub Actions and Helm, and monitored with Prometheus and Grafana | `Terraform` `EKS` `Helm` `GitHub Actions` `Prometheus` |
 | 🏗️ **[Terraform AWS Modules](https://github.com/TouficMad/terraform-aws-modules)** | Reusable VPC, EC2, S3 and IAM modules with separate dev/prod environments and an OIDC-based plan/apply pipeline | `Terraform` `AWS` `GitHub Actions` `tflint` |
 | ⚙️ **[Ansible + Jenkins Lab](https://github.com/TouficMad/ansible-jenkins-lab)** | Jenkins pipeline (lint → dry run → approve → deploy) running Ansible roles on systemd servers. Runs fully on a laptop | `Ansible` `Jenkins` `JCasC` `Docker` |
+| 💬 **[SMS Gateway](https://github.com/TouficMad/sms-gateway)** | A2P SMS gateway: REST API → Redis Streams → workers speaking **SMPP 3.4** to carriers, with least-cost routing, failover, delivery receipts, KEDA autoscaling and a k6 load test | `Python` `SMPP` `Redis` `Kubernetes` `KEDA` `Grafana` |
 | 📞 **[VoIP Routing Monitor](https://github.com/TouficMad/voip-routing-monitor)** | Voice carrier monitoring: ASR/NER/ACD/PDD exporter, **least-cost routing** with quality thresholds, alerts and Grafana dashboards | `Python` `Prometheus` `Alertmanager` `Grafana` |
 | 📊 **[Data Mining Project](Data_Mining_project.ipynb)** | Data mining notebook built in Google Colab | `Python` `Jupyter` |
 
