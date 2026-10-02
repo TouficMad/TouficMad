@@ -21,7 +21,8 @@
  **Routing Team Leader and Telecom Engineer**
 - 📡 **5 years** running critical telecom infrastructure: voice and SMS routing, carrier interconnects, least-cost routing and quality KPIs
 - ⚙️ **DevOps all the way:** infrastructure as code, CI/CD, containers, Kubernetes and observability
-- 💬 **Latest build: [SMS Gateway](https://github.com/TouficMad/sms-gateway).** It sends SMS to carriers over **SMPP 3.4** with least-cost routing, automatic failover, delivery tracking, Kubernetes autoscaling and Grafana monitoring
+- 📞 **Latest build: [SIP/VoIP Lab](https://github.com/TouficMad/sip-voip-lab).** A carrier-style voice platform: **Kamailio** load-balancing an **Asterisk** pool on Kubernetes, with failover, zero-downtime restarts, **SIPp** load tests and live ASR/PDD dashboards
+- 💬 **[SMS Gateway](https://github.com/TouficMad/sms-gateway):** sends SMS to carriers over **SMPP 3.4** with least-cost routing, automatic failover, delivery tracking, Kubernetes autoscaling and Grafana monitoring
 - 🔀 **Telecom × DevOps:** I build tools that bring cloud-native practices to voice (SIP) and SMS (SMPP) routing
 - 🎓 **Master's** in Computer and Telecom Engineering
 - 🤝 Ask me about **routing, SMPP, Terraform, Kubernetes** or **Grafana dashboards**
@@ -49,7 +50,7 @@
   </tr>
   <tr>
     <td align="center"><b>📞 Telecom</b></td>
-    <td>SIP · SMPP 3.4 · Least-cost routing · ASR / NER / ACD / PDD · Delivery receipts (DLR) · Carrier interconnects</td>
+    <td>SIP · Kamailio · Asterisk · SIPp · SMPP 3.4 · Least-cost routing · ASR / NER / ACD / PDD · Delivery receipts (DLR) · Carrier interconnects</td>
   </tr>
 </table>
 
@@ -76,12 +77,21 @@
   </tr>
   <tr>
     <td width="50%" valign="top">
+      <a href="https://github.com/TouficMad/sip-voip-lab">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=TouficMad&repo=sip-voip-lab&theme=tokyonight&hide_border=true&show_owner=false" alt="sip-voip-lab" />
+      </a>
+      <br/>☎️ <b>SIP/VoIP lab.</b> Kamailio edge proxy load-balancing an Asterisk pool on Kubernetes: health checks, failover, flood protection, graceful drain, SIPp load tests and ASR/NER/ACD/PDD dashboards.
+      <br/><sub><code>Kamailio</code> <code>Asterisk</code> <code>SIPp</code> <code>Kubernetes</code> <code>Prometheus</code></sub>
+    </td>
+    <td width="50%" valign="top">
       <a href="https://github.com/TouficMad/end-to-end-devops-aws">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=TouficMad&repo=end-to-end-devops-aws&theme=tokyonight&hide_border=true&show_owner=false" alt="end-to-end-devops-aws" />
       </a>
       <br/>🌐 <b>End-to-end DevOps on AWS.</b> From code to production: Docker, Terraform on <b>EKS</b>, GitHub Actions + Helm with keyless OIDC deploys, and Prometheus + Grafana monitoring.
       <br/><sub><code>Terraform</code> <code>EKS</code> <code>Helm</code> <code>GitHub Actions</code> <code>Trivy</code></sub>
     </td>
+  </tr>
+  <tr>
     <td width="50%" valign="top">
       <a href="https://github.com/TouficMad/terraform-aws-modules">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=TouficMad&repo=terraform-aws-modules&theme=tokyonight&hide_border=true&show_owner=false" alt="terraform-aws-modules" />
@@ -89,8 +99,6 @@
       <br/>🏗️ <b>Terraform AWS modules.</b> Reusable VPC, EC2, S3 and IAM modules with dev/prod environments and a plan/apply pipeline.
       <br/><sub><code>Terraform</code> <code>AWS</code> <code>tflint</code> <code>OIDC</code></sub>
     </td>
-  </tr>
-  <tr>
     <td width="50%" valign="top">
       <a href="https://github.com/TouficMad/ansible-jenkins-lab">
         <img src="https://github-readme-stats.vercel.app/api/pin/?username=TouficMad&repo=ansible-jenkins-lab&theme=tokyonight&hide_border=true&show_owner=false" alt="ansible-jenkins-lab" />
@@ -98,6 +106,8 @@
       <br/>⚙️ <b>Ansible + Jenkins lab.</b> A Jenkins pipeline (lint → dry run → approve → deploy) driving Ansible roles. Everything as code, running on a laptop.
       <br/><sub><code>Ansible</code> <code>Jenkins</code> <code>JCasC</code> <code>Docker</code></sub>
     </td>
+  </tr>
+  <tr>
     <td width="50%" valign="top">
       <a href="https://github.com/TouficMad/TouficMad/blob/main/Data_Mining_project.ipynb">
         <img src="https://img.shields.io/badge/Data%20Mining-Jupyter%20Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Data mining notebook" />
